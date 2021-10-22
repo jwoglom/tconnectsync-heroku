@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+    <title>tconnectsync-heroku</title>
+</head>
+<body>
+    <h1>tconnectsync-heroku</h1>
+    <p>The tconnectsync-heroku server is running with version: {{ version }}</p>
+
+    {% if interval_mins %}
+        <p>Tconnectsync will automatically run approximately every {{ interval_mins }} min so long as the Flask application is running.</p>
+        <p>It will run next at {{ job.next_run_time }}.</p>
+    {% else %}
+        <p>Tconnectsync must be triggered manually by an external service (e.g. UptimeRobot).</p>
+    {% endif %}
+
+</body>
+</html>
