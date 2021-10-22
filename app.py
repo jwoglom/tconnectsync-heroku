@@ -1,7 +1,7 @@
 """Wrapper for tconnectsync running in Heroku."""
 
 from variables import secret, interval_mins, tconnect_secret
-from utils import token_required, call, setup, get_time_args, run_update
+from utils import token_required, call, setup, get_time_args, run_update, as_text
 
 from threading import Thread
 from flask import Flask, request
@@ -41,7 +41,7 @@ def index_route():
 def check_login_route():
     tconnect, _ = setup()
     time_start, time_end = get_time_args(request.values.get("days"))
-    return call(check_login, [tconnect, time_start, time_end])
+    return as_text(*call(check_login, [tconnect, time_start, time_end]))
 
 """Runs tconnectsync synchronously, returning the result."""
 @app.route('/update')
@@ -49,7 +49,7 @@ def check_login_route():
 def update_route():
     days = request.values.get("days")
     pretend = bool(request.values.get("pretend"))
-    return run_update(days, pretend)
+    return as_text(*run_update(days, pretend))
 
 """Runs tconnectsync in the background, does not return an error if one occurs."""
 @app.route('/run')

@@ -6,7 +6,7 @@ import datetime
 
 from contextlib import redirect_stdout, redirect_stderr
 from functools import wraps
-from flask import request
+from flask import request, make_response
 
 from tconnectsync.api import TConnectApi
 from tconnectsync.nightscout import NightscoutApi
@@ -27,6 +27,11 @@ def call(fn, args):
     print('call output:', out)
 
     return out, code
+
+def as_text(*args):
+    resp = make_response(*args)
+    resp.mimetype = 'text/plain'
+    return resp
 
 def token_required(f):
     @wraps(f)
@@ -65,3 +70,5 @@ def run_update(days, pretend):
 
     print('Completed with', code)
     print(out)
+
+    return out, code
