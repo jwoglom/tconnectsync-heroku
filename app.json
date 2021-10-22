@@ -31,7 +31,7 @@
       },
       "TCONNECTSYNC_HEROKU_INTERVAL_MINS": {
         "description": "How frequently to trigger tconnectsync on its own. Set to 0 or blank if tconnectsync should not be triggered in a background thread",
-        "value": "30"
+        "value": "0"
       }
     },
     "formation": {
