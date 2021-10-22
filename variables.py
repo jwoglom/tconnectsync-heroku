@@ -9,7 +9,10 @@ if not secret:
 interval_mins = os.environ.get('TCONNECTSYNC_HEROKU_INTERVAL_MINS')
 if interval_mins:
     interval_mins = int(interval_mins)
-else:
+    if interval_mins < 1:
+        interval_mins = None
+
+if not interval_mins:
     print("The TCONNECTSYNC_HEROKU_INTERVAL_MINS environment variable is undefined,")
     print("so tconnectsync will not run automatically")
     interval_mins = None

@@ -69,4 +69,7 @@ if interval_mins:
         print('Finished update scheduler task')
 
 if __name__ == '__main__':
-    app.run()
+    import os
+    LISTEN_HOST = os.getenv('LISTEN_HOST', '0.0.0.0')
+    LISTEN_PORT = int(os.getenv('LISTEN_PORT', '5000'))
+    app.run(LISTEN_HOST, LISTEN_PORT)

@@ -1,0 +1,44 @@
+{
+    "name": "TConnectSync for Heroku",
+    "description": "Flask wrapper for tconnectsync running in Heroku, which synchronizes tconnect data to Nightscout",
+    "keywords": [
+      "tconnect",
+      "nightscout"
+    ],
+    "repository": "https://github.com/jwoglom/tconnectsync-heroku",
+    "logo": "https://images.squarespace-cdn.com/content/v1/55f63267e4b0b1dfc5acf418/1460133565328-8JPQA577SKLI3YY9QB9N/image-asset.png?format=1000w",
+    "success_url": "/",
+    "env": {
+      "TCONNECT_EMAIL": {
+        "description": "Email address for tconnect",
+        "value": ""
+      },
+      "TCONNECT_PASSWORD": {
+        "description": "Password for tconnect",
+        "value": ""
+      },
+      "NS_URL": {
+        "description": "URL to your Nightscout instance",
+        "value": ""
+      },
+      "NS_SECRET": {
+        "description": "Secret key for your Nightscout instance",
+        "value": ""
+      },
+      "TCONNECTSYNC_HEROKU_SECRET": {
+        "description": "A secret key used to trigger a tconnectsync run",
+        "generator": "secret"
+      },
+      "TCONNECTSYNC_HEROKU_INTERVAL_MINS": {
+        "description": "How frequently to trigger tconnectsync on its own. Set to 0 or blank if tconnectsync should not be triggered in a background thread",
+        "value": "30"
+      }
+    },
+    "formation": {
+      "web": {
+        "quantity": 1,
+        "size": "free"
+      }
+    },
+    "image": "heroku/python"
+  }
