@@ -9,6 +9,7 @@ verify_ssl = true
 flask = "*"
 tconnectsync = "*"
 flask-apscheduler = {git = "https://github.com/viniciuschiele/flask-apscheduler"}
+gunicorn = "*"
 
 [requires]
 python_version = "3.9"
