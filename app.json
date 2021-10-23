@@ -17,6 +17,10 @@
         "description": "Password for tconnect",
         "value": ""
       },
+      "PUMP_SERIAL_NUMBER": {
+        "description": "Tandem t:slim X2 pump serial number. Visible in the tconnect web UI and in Pump Info on the pump.",
+        "value": ""
+      },
       "NS_URL": {
         "description": "URL to your Nightscout instance",
         "value": ""
