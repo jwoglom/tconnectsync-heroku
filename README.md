@@ -19,6 +19,7 @@ You will need to set Heroku environment variables for tconnectsync options
 * NS_URL
 * NS_SECRET
 * PUMP_SERIAL_NUMBER
+* TIMEZONE_NAME
 
 You can invoke the application in one of two ways:
 
