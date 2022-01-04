@@ -1,0 +1,10 @@
+__pycache__
+dist
+build
+*.pyc
+*.pyo
+*.swp
+*.swa
+*.egg-info
+.env
+tconnectsync-check-output.log

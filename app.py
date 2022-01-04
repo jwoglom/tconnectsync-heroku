@@ -41,7 +41,7 @@ def index_route():
 def check_login_route():
     tconnect, _ = setup()
     time_start, time_end = get_time_args(request.values.get("days"))
-    return as_text(*call(check_login, [tconnect, time_start, time_end]))
+    return as_text(*call(check_login, [tconnect, time_start, time_end, True]))
 
 """Runs tconnectsync synchronously, returning the result."""
 @app.route('/update')
