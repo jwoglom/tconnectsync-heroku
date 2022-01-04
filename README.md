@@ -80,3 +80,22 @@ https://YOUR-APPLICATION-SUBDOMAIN-HERE.heroku.io/check_login?secret=YOUR-SECRET
 [tconnectsync]: https://github.com/jwoglom/tconnectsync
 [tconnect-installation]: https://github.com/jwoglom/tconnectsync#installation
 [uptimerobot]: https://uptimerobot.com/
+
+## Updating to a new version
+
+To update your Heroku instance of tconnectsync, perform the following steps.
+This is a tconnectsync specific version of the "Deploy using Heroku Git"
+instructions which are present in the "Deploy" tab of your Heroku console.
+
+1.  [Install the Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
+2.  In a terminal, clone your Heroku repository and pull the latest version of tconnectsync-heroku:
+    ```
+    heroku git:clone -a YOUR_HEROKU_SITE_NAME
+    cd YOUR_HEROKU_SITE_NAME
+    git remote add upstream https://github.com/jwoglom/tconnectsync-heroku
+    git pull -r upstream main
+    ```
+3.  Deploy the updated app to Heroku:
+    ```
+    git push heroku main
+    ```
