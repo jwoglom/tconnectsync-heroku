@@ -12,6 +12,7 @@ from flask_apscheduler.auth import HTTPBasicAuth
 from tconnectsync.check import check_login
 from tconnectsync import __version__ as tconnectsync_version
 
+version = 0.2
 
 app = Flask(__name__)
 scheduler = APScheduler()
@@ -31,7 +32,8 @@ def authenticate(auth):
 def index_route():
     job = scheduler.get_job('update')
     return render_template('index.html', 
-        version=tconnectsync_version,
+        tconnectsyncheroku_version=version,
+        tconnectsync_version=tconnectsync_version,
         job=job,
         interval_mins=interval_mins)
 

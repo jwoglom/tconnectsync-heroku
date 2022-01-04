@@ -5,7 +5,11 @@
 </head>
 <body>
     <h1>tconnectsync-heroku</h1>
-    <p>The tconnectsync-heroku server is running with version: {{ version }}</p>
+    <p>The tconnectsync-heroku server is running</p>
+    <ul>
+        <li>tconnectsync version: {{ tconnectsync_version }}</li>
+        <li>tconnectsync-heroku version: {{ tconnectsyncheroku_version }}</li>
+    </ul>
 
     {% if interval_mins %}
         <p>Tconnectsync will automatically run approximately every {{ interval_mins }} min so long as the Flask application is running.</p>
