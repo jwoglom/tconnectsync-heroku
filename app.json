@@ -1,9 +1,10 @@
 {
     "name": "TConnectSync for Heroku",
-    "description": "Flask wrapper for tconnectsync running in Heroku, which synchronizes tconnect data to Nightscout",
+    "description": "Flask wrapper for tconnectsync running in Heroku, which synchronizes t:connect data to Nightscout",
     "keywords": [
       "tconnect",
-      "nightscout"
+      "nightscout",
+      "diabetes"
     ],
     "repository": "https://github.com/jwoglom/tconnectsync-heroku",
     "logo": "https://images.squarespace-cdn.com/content/v1/55f63267e4b0b1dfc5acf418/1460133565328-8JPQA577SKLI3YY9QB9N/image-asset.png?format=1000w",
@@ -18,19 +19,23 @@
         "value": ""
       },
       "PUMP_SERIAL_NUMBER": {
-        "description": "Tandem t:slim X2 pump serial number. Visible in the tconnect web UI and in Pump Info on the pump.",
+        "description": "Tandem t:slim X2 pump serial number. Visible in the t:connect web UI and in Settings > My Pump > Pump Info on the pump.",
         "value": ""
       },
       "NS_URL": {
-        "description": "URL to your Nightscout instance",
+        "description": "URL of your Nightscout instance",
         "value": ""
       },
       "NS_SECRET": {
-        "description": "Secret key for your Nightscout instance",
+        "description": "Secret key (API_SECRET) of your Nightscout instance",
         "value": ""
       },
+      "TIMEZONE_NAME": {
+        "description": "Timezone of your phone and pump",
+        "value": "America/New_York"
+      },
       "TCONNECTSYNC_HEROKU_SECRET": {
-        "description": "A secret key used to trigger a tconnectsync run",
+        "description": "A secret key used to trigger a tconnectsync run and view additional info. This is auto-generated.",
         "generator": "secret"
       },
       "TCONNECTSYNC_HEROKU_INTERVAL_MINS": {
