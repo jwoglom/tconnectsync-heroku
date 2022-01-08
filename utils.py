@@ -11,7 +11,7 @@ from flask import request, make_response
 from tconnectsync.api import TConnectApi
 from tconnectsync.nightscout import NightscoutApi
 from tconnectsync.process import process_time_range
-from tconnectsync.features import DEFAULT_FEATURES
+from tconnectsync.features import DEFAULT_FEATURES, ALL_FEATURES
 
 def call(fn, args, **kwargs):
     print('call args:', args)
@@ -82,8 +82,11 @@ def run_update(days, pretend, features):
 # - specified as TCONNECTSYNC_HEROKU_FEATURES to tconnectsync-heroku
 # The default value is the tconnectsync DEFAULT_FEATURES
 def parse_features(features):
-    f = default_features.split(",")
+    ret = default_features.split(",")
     if features is not None and len(features) > 0:
-        f = features.split(",")
+        ret = features.split(",")
     
-    return [i.strip() for i in f]
+    ret = [i.strip() for i in ret]
+    for f in ret:
+        if f not in ALL_FEATURES:
+            raise RuntimeError("The feature '%s' was not recognized by tconnectsync. It is not one of: %s" % (f, str(ALL_FEATURES)))
