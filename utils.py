@@ -1,4 +1,4 @@
-from variables import secret, interval_mins, tconnect_secret
+from variables import secret, interval_mins, tconnect_secret, default_features
 
 import io
 import traceback
@@ -11,14 +11,15 @@ from flask import request, make_response
 from tconnectsync.api import TConnectApi
 from tconnectsync.nightscout import NightscoutApi
 from tconnectsync.process import process_time_range
+from tconnectsync.features import DEFAULT_FEATURES
 
-def call(fn, args):
+def call(fn, args, **kwargs):
     print('call args:', args)
     s = io.StringIO()
     code = 200
     with redirect_stdout(s), redirect_stderr(s):
         try:
-            fn(*args)
+            fn(*args, **kwargs)
         except Exception:
             traceback.print_exc(file=s)
             code = 500
@@ -62,13 +63,27 @@ def get_time_args(days):
 
     return time_start, time_end
 
-def run_update(days, pretend):
+def run_update(days, pretend, features):
     tconnect, nightscout = setup()
     time_start, time_end = get_time_args(days)
 
-    out, code = call(process_time_range, [tconnect, nightscout, time_start, time_end, pretend])
+    if features is None:
+        features = DEFAULT_FEATURES
+
+    out, code = call(process_time_range, [tconnect, nightscout, time_start, time_end, pretend, features])
 
     print('Completed with', code)
     print(out)
 
     return out, code
+
+# In order, uses the features (in comma-delimited format) that are:
+# - specified in the query (from the given argument)
+# - specified as TCONNECTSYNC_HEROKU_FEATURES to tconnectsync-heroku
+# The default value is the tconnectsync DEFAULT_FEATURES
+def parse_features(features):
+    f = default_features.split(",")
+    if features is not None and len(features) > 0:
+        f = features.split(",")
+    
+    return [i.strip() for i in f]

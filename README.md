@@ -55,6 +55,10 @@ The remainder of the steps required involve creating an account with a separate 
 
 ## UptimeRobot
 
+Even though your Heroku app is already up and running, we need to set up a service called **UptimeRobot**
+which will send a request to your Heroku app to keep it alive so that it can continue to process
+your incoming t:connect data in the background.
+
 First, go into your Heroku dashboard and select the app you created for tconnectsync.
 Click on Settings > Reveal Config Vars and copy the value of `TCONNECTSYNC_HEROKU_SECRET`,
 which will be in a text box to the right of `TCONNECTSYNC_HEROKU_SECRET`.
@@ -97,8 +101,29 @@ If you experience any issues setting up tconnectsync with Heroku, you can do one
 When asking for help, please be ready to copy-and-paste the output of the `check_login` URL
 referenced above which contains diagnostic information which may help to solve your issue(s).
 
+## Updating synchronization features
+
+By default, tconnectsync-heroku will upload the following data from your pump to Nightscout:
+* Basal events
+* Bolus events
+
+Tconnectsync supports additional so-called _synchronization features_ which enable it to send
+additional pump data into Nightscout. [You can see a list of these features here](https://github.com/jwoglom/tconnectsync#What-Gets-Synced).
+
+To set custom synchronization features, go into your Heroku Config Vars settings (Settings > Reveal Config Vars)
+and add a key and value with the following:
+
+* Key: `TCONNECTSYNC_HEROKU_FEATURES`
+* Value: a comma-separated list of features, without spaces. e.g., `BASAL,BOLUS,PUMP_EVENTS`
+
+If you don't set this value, tconnectsync-heroku will default to tconnectsync's default synchronization
+features (only basal and bolus data).
 
 ## Updating to a new version
+
+Updates are made frequently to tconnectsync to correct bugs or add new features.
+When some time has past after setting up tconnectsync-heroku and you want to ensure
+you are up to date, follow these instructions:
 
 To update your Heroku instance of tconnectsync, perform the following steps.
 This is a tconnectsync specific version of the "Deploy using Heroku Git"
@@ -124,7 +149,8 @@ run these steps inside the Ubuntu Terminal.
 ## Alternate Configuration Using Background Tasks
 What follows is an alternate option, which may be easier to set up but may not work for all setups:
 
-Go into your Heroku Config Vars settings and add a key and value with the following:
+Go into your Heroku Config Vars settings (Settings > Reveal Config Vars)
+and add a key and value with the following:
 
 * TCONNECTSYNC_HEROKU_INTERVAL_MINS - The interval at which a scheduled task should
   be performed for a synchronization. This will **only** function while the Flask

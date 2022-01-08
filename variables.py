@@ -24,3 +24,11 @@ except Exception as e:
     print("Please follow the setup instructions at:")
     print("https://github.com/jwoglom/tconnectsync-heroku")
     raise e
+
+from tconnectsync.features import DEFAULT_FEATURES as tconnectsync_default_features
+
+default_features = os.environ.get('TCONNECTSYNC_HEROKU_FEATURES')
+if not default_features:
+    default_features = ",".join(tconnectsync_default_features)
+    print("The TCONNECTSYNC_HEROKU_FEATURES environment variable is undefined,")
+    print("so the following default tconnectsync features will be used: %s" % default_features)

@@ -1,7 +1,7 @@
 """Wrapper for tconnectsync running in Heroku."""
 
 from variables import secret, interval_mins, tconnect_secret
-from utils import token_required, call, setup, get_time_args, run_update, as_text
+from utils import token_required, call, setup, get_time_args, run_update, as_text, parse_features
 
 from threading import Thread
 from flask import Flask, request
@@ -51,7 +51,8 @@ def check_login_route():
 def update_route():
     days = request.values.get("days")
     pretend = bool(request.values.get("pretend"))
-    return as_text(*run_update(days, pretend))
+    features = parse_features(request.values.get("features"))
+    return as_text(*run_update(days, pretend, features))
 
 """Runs tconnectsync in the background, does not return an error if one occurs."""
 @app.route('/run')
@@ -59,7 +60,8 @@ def update_route():
 def run_route():
     days = request.values.get("days")
     pretend = bool(request.values.get("pretend"))
-    Thread(target=run_update, kwargs={'days': days, 'pretend': pretend}).start()
+    features = parse_features(request.values.get("features"))
+    Thread(target=run_update, kwargs={'days': days, 'pretend': pretend, 'features': features}).start()
     return 'Triggered job'
 
 if interval_mins:
@@ -67,7 +69,7 @@ if interval_mins:
     @scheduler.task('interval', id='update', seconds=interval_mins * 60, misfire_grace_time=300)
     def scheduled_update_task():
         print('Running update scheduler task')
-        run_update(1, False)
+        run_update(1, False, parse_features(None))
         print('Finished update scheduler task')
 
 if __name__ == '__main__':
