@@ -90,3 +90,4 @@ def parse_features(features):
     for f in ret:
         if f not in ALL_FEATURES:
             raise RuntimeError("The feature '%s' was not recognized by tconnectsync. It is not one of: %s" % (f, str(ALL_FEATURES)))
+    return ret
