@@ -19,11 +19,11 @@
         "value": ""
       },
       "PUMP_SERIAL_NUMBER": {
-        "description": "Tandem t:slim X2 pump serial number. Visible in the t:connect web UI and in Settings > My Pump > Pump Info on the pump.",
+        "description": "Tandem t:slim X2 pump serial number. Visible in the t:connect web UI and in Settings > My Pump > Pump Info on the pump. Enter only the number, do not include '#'",
         "value": ""
       },
       "NS_URL": {
-        "description": "URL of your Nightscout instance",
+        "description": "URL of your Nightscout instance. Should be entered like https://mynightscouturl.herokuapp.com",
         "value": ""
       },
       "NS_SECRET": {
@@ -31,7 +31,7 @@
         "value": ""
       },
       "TIMEZONE_NAME": {
-        "description": "Timezone of your phone and pump",
+        "description": "Timezone of your phone and pump. In TZ database format: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones",
         "value": "America/New_York"
       },
       "TCONNECTSYNC_HEROKU_SECRET": {

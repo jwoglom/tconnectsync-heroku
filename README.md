@@ -41,7 +41,7 @@ The remainder of the options are ([tconnectsync environment variables][tconnect-
 * `TCONNECT_PASSWORD` - Your t:connect password
 * `NS_URL` - Your Nightscout site URL (e.g. https://yournightscoutsite.herokuapp.com)
 * `NS_SECRET` - Your Nightscout `API_SECRET` value
-* `PUMP_SERIAL_NUMBER` - The numeric serial number of your pump
+* `PUMP_SERIAL_NUMBER` - The numeric serial number of your pump. Enter only the number, do not include '#'
 * `TIMEZONE_NAME` - The timezone code in which your phone and pump's time is set. ([View a full list of valid values](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones))
 
 A new variable called `TCONNECTSYNC_HEROKU_SECRET` will be automatically generated for you.
