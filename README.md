@@ -161,6 +161,33 @@ referenced above which contains diagnostic information which may help to solve y
 **The remainder of the instructions below are for advanced use cases.**
 Once you've gotten to this point, wait 30 minutes to see if pump data starts appearing in Nightscout!
 
+## Troubleshooting
+
+### _I get a Heroku error page when clicking **Open App** from the Heroku dashboard_
+
+View the application-side error logs by going to the Heroku dashboard and clicking on **More > View logs**:
+
+<img src="https://i.imgur.com/JzMagmv.png" width="500" />
+
+Check if there are any errors about invalid configuration options.
+If the problem is something else, follow the **If you need help** instructions above.
+
+### _The `check_login` page gives a `Received ApiException in ControlIQApi: ControlIQ API HTTP 404 response` error_
+
+Please verify that you've completed the following steps:
+
+* Have you created an account on the tconnect website?
+* With the tconnect credentials you've specified, can you:
+  * Log in to the Android or iOS app, with your pump paired and sending data
+  * Log in at https://tconnect.tandemdiabetes.com and see your pump information appear
+
+If tconnectsync still gives this error, try:
+
+* Downloading the [Windows or MacOS TConnect Uploader application](https://tconnect.tandemdiabetes.com/GettingStarted/Download.aspx) and plug your pump into your computer to upload your settings.
+* Resetting your password at https://tconnect.tandemdiabetes.com and setting it to the same password you use in the Android or iOS app
+
+If this doesn't help, follow the **If you need help** instructions above.
+
 ## Updating synchronization features
 
 By default, tconnectsync-heroku will upload the following data from your pump to Nightscout:
