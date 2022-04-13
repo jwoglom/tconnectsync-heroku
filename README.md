@@ -130,9 +130,13 @@ Your options should look similar to this within UptimeRobot (but with your actua
 
 <img src="https://i.imgur.com/wJ7DfqT.png" width="900" />
 
-You can optionally specify an _alert contact to notify_ if you would like to receive an email whenever tconnectsync-heroku experiences an error.
-
 Click **Create Monitor**.
+
+
+You can optionally specify an _alert contact to notify_ if you would like to receive an email whenever tconnectsync-heroku experiences an error.
+If you don't specify one, you'll have to hit the button again.
+<img src="https://i.imgur.com/c3bLF8j.png" width="400" />
+
 Now, every 30 minutes, tconnectsync will be triggered to synchronize your data between t:connect and Nightscout!
 
 ## Testing
