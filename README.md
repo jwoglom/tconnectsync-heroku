@@ -26,16 +26,16 @@ Either log in to your existing Heroku account or create a new one.
 Next, you'll be creating a new application inside your Heroku account.
 This will not be replacing your existing Heroku Nightscout app, if you have one; you will
 be creating a second app with a new name.
-Start by clicking the Deploy button below:
+**Start by clicking the Deploy button below:**
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/jwoglom/tconnectsync-heroku)
 
-For *App name*, you can enter any value, such as `YourExistingNightscoutAppName-tconnect`.
-The app name determines the URL to access your tconnectsync-heroku website, which will be
-e.g. `YourExistingNightscoutAppName-tconnect.herokuapp.com`.
-This **tconnectsync Heroku App URL** will be referred to as `https://YOUR-TCONNECTSYNC-APP-NAME.herokuapp.com` for the remainder of the guide.
+For *App name*, you can enter any value. 
+We recommend **`MyNightscoutSite-tconnect`**.
 
-The remainder of the options are ([tconnectsync environment variables][tconnect-installation]):
+The app name determines the URL to access your tconnectsync-heroku website, e.g. if you enter the app name `MyNightscoutSite-tconnect`, then the URL for tconnectsync-heroku will be `https://MyNightscoutSite-tconnect.herokuapp.com`.
+
+The remainder of the options are [tconnectsync environment variables][tconnect-installation]:
 
 * `TCONNECT_EMAIL` - Your t:connect email
 * `TCONNECT_PASSWORD` - Your t:connect password
@@ -51,7 +51,17 @@ to be synchronized to Nightscout, as well as view the current status of synchron
 You can find its automatically generated value by going to Settings > Reveal Config Vars in your Heroku dashboard after setup.
 
 Once you've filled out the Create New App form and pressed *Deploy App*, you'll be taken to the Heroku dashboard.
-The remainder of the steps required involve creating an account with a separate service, **UptimeRobot**.
+From here, you can click on **Open App** to see whether the tconnectsync-heroku server is running.
+
+<img src="https://i.imgur.com/ND0jouy.png" width="600" />
+
+If you see a page like the following, then you're ready to move on!
+
+<img src="https://i.imgur.com/1HSN6nn.png" width="600" />
+
+If you get an error, then jump to the instructions in the **Testing** section below.
+
+Otherwise, continue reading below to set up tconnectsync-heroku by creating an account with a separate service, **UptimeRobot**.
 
 ## UptimeRobot
 
@@ -59,17 +69,32 @@ Even though your Heroku app is already up and running, we need to set up a servi
 which will send a request to your Heroku app to keep it alive so that it can continue to process
 your incoming t:connect data in the background.
 
-First, go into your Heroku dashboard and select the app you created for tconnectsync.
-Click on Settings > Reveal Config Vars and copy the value of `TCONNECTSYNC_HEROKU_SECRET`,
-which will be in a text box to the right of `TCONNECTSYNC_HEROKU_SECRET`.
+### Creating an Account
+Create an account at [UptimeRobot][uptimerobot] by going to https://uptimerobot.com.
 
-If you'd like, you can change the value here to a different password.
-If so, then save settings and then restart the app in heroku. (More > Restart All Dynos).
+<img src="https://i.imgur.com/ZiTPK9H.png" width="500" />
 
-Then, create an account at [UptimeRobot][uptimerobot].
-Once you register, log in and click **Add New Monitor**.
+<img src="https://i.imgur.com/ygTzmyY.png" width="500" />
 
-Enter the following:
+Once you register, you will be prompted to verify your email address.
+Click the link you receive from UptimeRobot in your email.
+
+<img src="https://i.imgur.com/SuRy9Ex.png" width="500" />
+
+If you're asked to upgrade to the PRO plan, click **Maybe later**
+
+<img src="https://i.imgur.com/zNBZafz.png" width="500" />
+
+### Setting Up UptimeRobot
+Now that you have an account and are logged in, you should see a page like the following:
+
+<img src="https://i.imgur.com/FNeEWJX.png" width="900" />
+
+Click the **Add New Monitor** button. You'll see a popup like this:
+
+<img src="https://i.imgur.com/RJfW9wB.png" width="500" />
+
+Enter the following, one at a time:
 
 * Monitor Type: **HTTP(s)**
 * Friendly Name: **tconnectsync**
@@ -78,12 +103,35 @@ Enter the following:
 
 Enter the following as the URL:
 ```
-https://YOUR-TCONNECTSYNC-APP-NAME.herokuapp.com/run?secret=YOUR_TCONNECTSYNC_HEROKU_SECRET_VALUE
+https://MyNightscoutSite-tconnect.herokuapp.com/run?secret=YOUR_TCONNECTSYNC_HEROKU_SECRET_VALUE
 ```
+
+**MyNightscoutSite-tconnect** is the App Name you provided for tconnectsync-heroku.
+
+To get the value of **YOUR_TCONNECTSYNC_HEROKU_SECRET_VALUE**:
+
+* Go into your Heroku dashboard (https://dashboard.heroku.com) and select the app you created for tconnectsync:
+
+<img src="https://i.imgur.com/SKPcBCw.png" width="500" />
+
+* Click on Settings > Reveal Config Vars.
+
+<img src="https://i.imgur.com/u6z9Kph.png" width="500" />
+
+* Now find the row which has `TCONNECTSYNC_HEROKU_SECRET` displayed on the left,
+  and copy the value contained in the right-most text box next to it.
+  This is the value of the `TCONNECTSYNC_HEROKU_SECRET` environment variable.
+
+(If you'd like, you can change the value here to a different password.
+If so, then save settings and then restart the app in heroku via More > Restart All Dynos.)
+
+
+Your options should look similar to this (but with your actual tconnectsync-heroku URL and secret value):
+
+<img src="https://i.imgur.com/wJ7DfqT.png" width="900" />
 
 Click **Create Monitor**.
 Now, every 30 minutes, tconnectsync will be triggered to synchronize your data between t:connect and Nightscout!
-
 
 ## Testing
 
@@ -91,15 +139,27 @@ You can hit the following URL to verify that your tconnectsync options are
 specified correctly, and that both t:connect and Nightscout are accessible:
 
 ```
-https://YOUR-TCONNECTSYNC-APP-NAME.herokuapp.com/check_login?secret=YOUR_TCONNECTSYNC_HEROKU_SECRET_VALUE
+https://MyNightscoutSite-tconnect.herokuapp.com/check_login?secret=YOUR_TCONNECTSYNC_HEROKU_SECRET_VALUE
 ```
 
-If you experience any issues setting up tconnectsync with Heroku, you can do one of the following:
+(Remember to replace `MyNightscoutSite-tconnect` and `YOUR_TCONNECTSYNC_HEROKU_SECRET_VALUE` with your own values like mentioned before.)
+
+There is a lot of debugging output on this page, so scroll to the very bottom.
+If it says **No API errors returned!** then you are all good to go!
+
+If the page doesn't load, you can also view the application-side error logs by going to the Heroku dashboard and clicking on **More > View logs**:
+
+<img src="https://i.imgur.com/JzMagmv.png" width="500" />
+
+**If you need help,** you can do one of the following:
 * Post in the **CGM in the Cloud** Facebook group
 * Open a GitHub Issue at https://github.com/jwoglom/tconnectsync-heroku/issues/new
 
 When asking for help, please be ready to copy-and-paste the output of the `check_login` URL
 referenced above which contains diagnostic information which may help to solve your issue(s).
+
+**The remainder of the instructions below are for advanced use cases.**
+Once you've gotten to this point, wait 30 minutes to see if pump data starts appearing in Nightscout!
 
 ## Updating synchronization features
 
