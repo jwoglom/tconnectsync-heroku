@@ -126,9 +126,11 @@ To get the value of **YOUR_TCONNECTSYNC_HEROKU_SECRET_VALUE**:
 If so, then save settings and then restart the app in heroku via More > Restart All Dynos.)
 
 
-Your options should look similar to this (but with your actual tconnectsync-heroku URL and secret value):
+Your options should look similar to this within UptimeRobot (but with your actual tconnectsync-heroku URL and secret value):
 
 <img src="https://i.imgur.com/wJ7DfqT.png" width="900" />
+
+You can optionally specify an _alert contact to notify_ if you would like to receive an email whenever tconnectsync-heroku experiences an error.
 
 Click **Create Monitor**.
 Now, every 30 minutes, tconnectsync will be triggered to synchronize your data between t:connect and Nightscout!
