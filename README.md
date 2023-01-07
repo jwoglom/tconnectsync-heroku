@@ -1,5 +1,15 @@
 # TConnectSync for Heroku
 
+> **Warning**
+> **Heroku discontinued their Free Tier effective November 28, 2022.**
+>
+> The instructions below will still work on paid Heroku plans.
+> For a free alternative, [you can migrate to fly.io](https://fly.io/launch/heroku).
+>
+> More detailed instructions for using Fly and other Heroku alternatives are not currently available but may be added at a later date.
+>
+> If you need support, [open an issue on tconnectsync with the `heroku` tag.](https://github.com/jwoglom/tconnectsync/issues/new/choose)
+
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/jwoglom/tconnectsync-heroku)
 
 This project allows [tconnectsync][tconnectsync] to run in Heroku.
@@ -161,7 +171,7 @@ If the page doesn't load, you can also view the application-side error logs by g
 
 **If you need help,** you can do one of the following:
 * Post in the **CGM in the Cloud** Facebook group
-* Open a GitHub Issue at https://github.com/jwoglom/tconnectsync/issues/new with the `heroku` tag.
+* Open a GitHub Issue at https://github.com/jwoglom/tconnectsync/issues/new/choose with the `heroku` tag.
 
 When asking for help, please be ready to copy-and-paste the output of the `check_login` URL
 referenced above which contains diagnostic information which may help to solve your issue(s).
