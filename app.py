@@ -13,6 +13,8 @@ from tconnectsync.check import check_login
 from tconnectsync import __version__ as tconnectsync_version
 
 version = 0.2
+print("Launching tconnectsync-heroku %s" % str(version))
+print("Using tconnectsync %s" % str(tconnectsync_version))
 
 app = Flask(__name__)
 scheduler = APScheduler()
