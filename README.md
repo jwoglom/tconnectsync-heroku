@@ -13,8 +13,7 @@
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/jwoglom/tconnectsync-heroku)
 
 This project allows [tconnectsync][tconnectsync] to run in Heroku.
-It supports the Heroku Free Plan: you should have enough monthly dyno minutes
-available to run the app continuously if you provide a credit card to your account.
+Unfortunately, the Heroku Free plan is no longer available, so you will need to configure billing in Heroku and pay $5/month ([see Heroku pricing details](https://www.heroku.com/pricing)).
 
 **Note:** GitHub Issues have been disabled in this repository. To report or investigate issues, [use the GitHub Issues page for tconnectsync](https://github.com/jwoglom/tconnectsync/issues).
 
