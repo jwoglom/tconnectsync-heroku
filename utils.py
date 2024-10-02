@@ -10,7 +10,7 @@ from flask import request, make_response
 
 from tconnectsync.api import TConnectApi
 from tconnectsync.nightscout import NightscoutApi
-from tconnectsync.process import process_time_range
+from tconnectsync.sync.tandemsource.heroku_helpers import run_oneshot
 from tconnectsync.features import DEFAULT_FEATURES, ALL_FEATURES
 
 def call(fn, args, **kwargs):
@@ -70,7 +70,7 @@ def run_update(days, pretend, features):
     if features is None:
         features = DEFAULT_FEATURES
 
-    out, code = call(process_time_range, [tconnect, nightscout, time_start, time_end, pretend, features])
+    out, code = call(run_oneshot, [tconnect, nightscout, pretend, features, tconnect_secret, time_start, time_end])
 
     print('Completed with', code)
     print(out)
