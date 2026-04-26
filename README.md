@@ -22,7 +22,7 @@ Unfortunately, the Heroku Free plan is no longer available, so you will need to 
 Before beginning, make sure you have set up the t:connect
 [Android](https://play.google.com/store/apps/details?id=com.tandemdiabetes.tconnect&hl=en_US&gl=US), 
 or [iPhone/iOS](https://apps.apple.com/us/app/t-connect-mobile/id1455916023) application.
-If you have not used either, you can find more information or create an account [at the t:connect website]([t:connect web](https://tconnect.tandemdiabetes.com/).
+If you have not used either, you can find more information or create an account [at the t:connect website]([t:connect web](https://source.tandemdiabetes.com/).
 
 You'll need the following information:
 
@@ -193,15 +193,16 @@ If the problem is something else, follow the **If you need help** instructions a
 
 Please verify that you've completed the following steps:
 
-* Have you created an account on the tconnect website?
-* With the tconnect credentials you've specified, can you:
-  * Log in to the Android or iOS app, with your pump paired and sending data
-  * Log in at https://tconnect.tandemdiabetes.com and see your pump information appear
+* Have you created an account on the Tandem Source website?
+* With the Tandem credentials you've specified, can you:
+  * Log in to the Android or iOS app, with your pump paired and sending data (Tandem Mobi app for Mobi, or Tandem t:connect/Tandem t:slim app for t:slim X2)
+  * Log in at https://source.tandemdiabetes.com and see your pump information appear
 
 If tconnectsync still gives this error, try:
 
-* Downloading the [Windows or MacOS TConnect Uploader application](https://tconnect.tandemdiabetes.com/GettingStarted/Download.aspx) and plug your pump into your computer to upload your settings.
-* Resetting your password at https://tconnect.tandemdiabetes.com and setting it to the same password you use in the Android or iOS app
+* If using a t:slim X2 pump, log in to Tandem Source, then plug your pump into your computer and use the sync pump data feature in the web interface.
+* If using a Tandem Mobi pump, make sure you are logged in to your Tandem account in the Mobi app on your phone: log out and back in to be sure you have the correct password.
+* Reset your password at https://source.tandemdiabetes.com and make sure you use the same password in the Android/iOS app and tconnectsync.
 
 If this doesn't help, follow the **If you need help** instructions above.
 
