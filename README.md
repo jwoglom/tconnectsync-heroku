@@ -50,6 +50,7 @@ The remainder of the options are [tconnectsync environment variables][tconnect-i
 
 * `TCONNECT_EMAIL` - Your t:connect email
 * `TCONNECT_PASSWORD` - Your t:connect password
+* `TCONNECT_REGION` - `US` if your Tandem Source account is in the United States, or `EU` if it is in Europe. If this is wrong, logins fail with a 401 `account/invalid_credentials` error even though the email and password are correct.
 * `NS_URL` - Your Nightscout site URL (e.g. https://yournightscoutsite.herokuapp.com)
 * `NS_SECRET` - Your Nightscout `API_SECRET` value
 * `PUMP_SERIAL_NUMBER` - The numeric serial number of your pump. Enter only the number, do not include '#'

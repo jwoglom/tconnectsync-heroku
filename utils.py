@@ -47,7 +47,10 @@ def token_required(f):
     return decorated_function
 
 def setup():
-    tconnect = TConnectApi(tconnect_secret.TCONNECT_EMAIL, tconnect_secret.TCONNECT_PASSWORD)
+    # Pass TCONNECT_REGION explicitly: older tconnectsync versions default the
+    # region to US when it isn't given, which sends EU accounts to the US
+    # endpoints and fails login with a 401 account/invalid_credentials.
+    tconnect = TConnectApi(tconnect_secret.TCONNECT_EMAIL, tconnect_secret.TCONNECT_PASSWORD, tconnect_secret.TCONNECT_REGION)
     nightscout = NightscoutApi(tconnect_secret.NS_URL, tconnect_secret.NS_SECRET)
 
     return tconnect, nightscout

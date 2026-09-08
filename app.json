@@ -18,6 +18,10 @@
         "description": "Password for tconnect",
         "value": ""
       },
+      "TCONNECT_REGION": {
+        "description": "Region of your Tandem Source account: US for the United States, EU for Europe",
+        "value": "US"
+      },
       "PUMP_SERIAL_NUMBER": {
         "description": "Tandem t:slim X2 pump serial number. Visible in the t:connect web UI and in Settings > My Pump > Pump Info on the pump. Enter only the number, do not include '#'",
         "value": ""
